@@ -1,5 +1,7 @@
 ﻿let plantas = JSON.parse(localStorage.getItem("plantas")) || [];
 
+alert("Plantas encontradas: " + plantas.length);
+
 let editando = -1;
 
 let filtroActual = "Todas";
