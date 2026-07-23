@@ -237,6 +237,12 @@ mostrar();
 
 function guardar(){
 
+console.log(
+"Peso guardado:",
+(JSON.stringify(plantas).length / 1024 / 1024).toFixed(2),
+"MB"
+);
+
 localStorage.setItem(
 "plantas",
 JSON.stringify(plantas)
