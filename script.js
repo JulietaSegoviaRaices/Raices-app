@@ -29,9 +29,21 @@ plantas.forEach(function(p){
 });
 
 
-guardar();
+abrirBase()
+.then(() => {
 
-mostrar();
+    console.log("Base de datos abierta correctamente.");
+
+    guardar();
+
+    mostrar();
+
+})
+.catch(error => {
+
+    console.error(error);
+
+});
 
 
 
