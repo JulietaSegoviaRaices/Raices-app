@@ -30,9 +30,29 @@ plantas.forEach(function(p){
 
 
 abrirBase()
-.then(() => {
+.then(async () => {
 
     console.log("Base de datos abierta correctamente.");
+
+    for(let planta of plantas){
+
+        let fotos = await obtenerFotosDB(planta.id);
+
+        if(fotos.length>0){
+
+            planta.foto = fotos[fotos.length-1].foto;
+
+            planta.fotos = fotos.map(f => f.foto);
+
+        }else{
+
+            planta.foto = "";
+
+            planta.fotos = [];
+
+        }
+
+    }
 
     mostrar();
 
@@ -149,6 +169,10 @@ function guardarPlanta(imagen){
 
 let planta={
 
+id: editando>=0
+? plantas[editando].id
+: Date.now(),
+
 nombre:nombre.value,
 
 tipo:tipo.value,
@@ -195,7 +219,7 @@ planta.historial.push(
 );
 
 
-plantas[editando]=planta;
+plantas.splice(editando,1,planta);
 
 editando=-1;
 
@@ -209,7 +233,7 @@ guardar();
 if(imagen){
 
 guardarFotoDB(
-plantas.length-1,
+planta.id,
 imagen
 )
 .then(()=>{

@@ -153,10 +153,11 @@ const request=store.add({
 
 idPlanta:idPlanta,
 
-foto:foto
+foto:foto,
+
+fecha:new Date().toISOString()
 
 });
-
 
 request.onsuccess=()=>resolve();
 
