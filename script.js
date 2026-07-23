@@ -98,6 +98,7 @@ guardarPlanta(fotoAnterior);
 
 function guardarPlanta(imagen){
 
+alert("Llegó la foto");
 
 let planta={
 
