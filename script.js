@@ -80,7 +80,8 @@ let lector = new FileReader();
 lector.onload=function(e){
 
 
-guardarPlanta(e.target.result);
+
+Planta(e.target.result);
 
 
 };
@@ -109,10 +110,6 @@ guardarPlanta(fotoAnterior);
 
 
 function guardarPlanta(imagen){
-
-alert("Llegó la foto");
-
-alert("Creando planta");
 
 let planta={
 
@@ -171,6 +168,18 @@ editando=-1;
 
 guardar();
 
+guardarPlantaDB(planta)
+.then(()=>{
+
+    console.log("Planta guardada en IndexedDB");
+
+})
+.catch(error=>{
+
+    console.error(error);
+
+});
+
 limpiar();
 
 mostrar();
@@ -184,20 +193,11 @@ mostrar();
 
 function guardar(){
 
-try{
 
 localStorage.setItem(
 "plantas",
 JSON.stringify(plantas)
 );
-
-alert("Guardado OK");
-
-}catch(error){
-
-alert("ERROR: " + error.message);
-
-}
 
 }
 

@@ -37,3 +37,19 @@ function abrirBase() {
     });
 
 }
+
+function guardarPlantaDB(planta){
+    ...
+}
+
+function obtenerPlantasDB(){
+    ...
+}
+
+function actualizarPlantaDB(planta){
+    ...
+}
+
+function eliminarPlantaDB(id){
+    ...
+}
