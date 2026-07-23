@@ -627,8 +627,7 @@ ${p.favorita ? "⭐" : "☆"}
 
 </button>
 
-
-<button class="editar" onclick="editar(${i})">
+<button class="editar" onclick="editar(${i}); document.getElementById('ficha').style.display='none';">
 
 ✏️ Editar
 
