@@ -237,11 +237,7 @@ mostrar();
 
 function guardar(){
 
-console.log(
-"Peso guardado:",
-(JSON.stringify(plantas).length / 1024 / 1024).toFixed(2),
-"MB"
-);
+try{
 
 localStorage.setItem(
 "plantas",
@@ -249,27 +245,18 @@ JSON.stringify(plantas)
 );
 
 
-plantas.forEach(function(planta){
+console.log("Guardado correcto");
 
-guardarPlantaDB(planta)
-.then(()=>{
 
-console.log("Guardada en IndexedDB");
-
-})
-.catch(error=>{
+}catch(error){
 
 console.error(error);
 
-});
-
-});
-
-
-console.log("Guardado correcto");
+alert("Error guardando");
 
 }
 
+}
 function limpiar(){
 
 nombre.value="";
@@ -1327,29 +1314,4 @@ return "hace "+años+" años y "+mesesRestantes+" meses";
 }
 
 
-function borrarFotos(){
-
-let plantasLimpias = plantas.map(function(p){
-
-    return {
-        ...p,
-        foto:""
-    };
-
-});
-
-
-localStorage.setItem(
-"plantas",
-JSON.stringify(plantasLimpias)
-);
-
-
-plantas = plantasLimpias;
-
-alert("Fotos eliminadas. La colección sigue guardada.");
-
-mostrar();
-
-}
 
