@@ -34,8 +34,6 @@ abrirBase()
 
     console.log("Base de datos abierta correctamente.");
 
-    guardar();
-
     mostrar();
 
 })
@@ -44,7 +42,6 @@ abrirBase()
     console.error(error);
 
 });
-
 
 
 function agregarPlanta(){
@@ -79,13 +76,9 @@ let lector = new FileReader();
 
 lector.onload=function(e){
 
-
-
-Planta(e.target.result);
-
+    guardarPlanta(e.target.result);
 
 };
-
 
 lector.readAsDataURL(archivo);
 
@@ -168,6 +161,7 @@ editando=-1;
 
 guardar();
 
+/*
 guardarPlantaDB(planta)
 .then(()=>{
 
@@ -179,6 +173,7 @@ guardarPlantaDB(planta)
     console.error(error);
 
 });
+*/
 
 limpiar();
 

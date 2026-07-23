@@ -39,17 +39,79 @@ function abrirBase() {
 }
 
 function guardarPlantaDB(planta){
-    ...
+
+    return new Promise((resolve,reject)=>{
+
+        const tx=db.transaction("plantas","readwrite");
+
+        const store=tx.objectStore("plantas");
+
+        const request=store.add(planta);
+
+        request.onsuccess=()=>resolve();
+
+        request.onerror=()=>reject(request.error);
+
+    });
+
 }
+
+
 
 function obtenerPlantasDB(){
-    ...
+
+    return new Promise((resolve,reject)=>{
+
+        const tx=db.transaction("plantas","readonly");
+
+        const store=tx.objectStore("plantas");
+
+        const request=store.getAll();
+
+        request.onsuccess=()=>resolve(request.result);
+
+        request.onerror=()=>reject(request.error);
+
+    });
+
 }
+
+
 
 function actualizarPlantaDB(planta){
-    ...
+
+    return new Promise((resolve,reject)=>{
+
+        const tx=db.transaction("plantas","readwrite");
+
+        const store=tx.objectStore("plantas");
+
+        const request=store.put(planta);
+
+        request.onsuccess=()=>resolve();
+
+        request.onerror=()=>reject(request.error);
+
+    });
+
 }
 
+
+
 function eliminarPlantaDB(id){
-    ...
+
+    return new Promise((resolve,reject)=>{
+
+        const tx=db.transaction("plantas","readwrite");
+
+        const store=tx.objectStore("plantas");
+
+        const request=store.delete(id);
+
+        request.onsuccess=()=>resolve();
+
+        request.onerror=()=>reject(request.error);
+
+    });
+
 }
