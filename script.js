@@ -33,31 +33,17 @@ plantas.forEach(function(p){
 
 
 abrirBase()
-.then(async () => {
+.then(() => {
 
     console.log("Base de datos abierta correctamente.");
 
-    for(let planta of plantas){
+    cargarFotos()
+    .then(()=>{
 
-        let fotos = await obtenerFotosDB(planta.id);
+        mostrar();
 
-        if(fotos.length>0){
+    });
 
-            planta.foto = fotos[fotos.length-1].foto;
-
-            planta.fotos = fotos.map(f => f.foto);
-
-        }else{
-
-            planta.foto = "";
-
-            planta.fotos = [];
-
-        }
-
-    }
-
-    mostrar();
 
 })
 .catch(error => {
@@ -65,7 +51,6 @@ abrirBase()
     console.error(error);
 
 });
-
 
 function agregarPlanta(){
 
@@ -204,8 +189,9 @@ favorita: editando>=0 ? plantas[editando].favorita : false
 };
 
 
-
 if(editando==-1){
+
+planta.id = Date.now();
 
 planta.historial.push(
 "Creada: "+tiempoTranscurrido(new Date())
@@ -215,6 +201,8 @@ plantas.push(planta);
 
 
 }else{
+
+planta.id = plantas[editando].id;
 
 
 planta.historial.push(
@@ -236,9 +224,10 @@ guardar();
 if(imagen){
 
 guardarFotoDB(
-planta.id,
-imagen
+    planta.id,
+    imagen
 )
+
 .then(()=>{
 
 console.log("Foto guardada en IndexedDB");
@@ -1352,5 +1341,53 @@ return "hace "+años+" años y "+mesesRestantes+" meses";
 
 }
 
+
+function cargarFotos(){
+
+return new Promise((resolve)=>{
+
+
+let promesas = plantas.map(function(p){
+
+
+return obtenerFotosDB(p.id)
+.then(function(fotos){
+
+
+if(fotos.length > 0){
+
+p.foto = fotos[fotos.length-1].foto;
+
+p.fotos = fotos.map(function(f){
+
+return f.foto;
+
+});
+
+}
+
+
+});
+
+
+});
+
+
+Promise.all(promesas)
+.then(()=>{
+
+
+guardar();
+
+
+resolve();
+
+
+});
+
+
+});
+
+}
 
 
