@@ -100,6 +100,8 @@ function guardarPlanta(imagen){
 
 alert("Llegó la foto");
 
+alert("Creando planta");
+
 let planta={
 
 nombre:nombre.value,
