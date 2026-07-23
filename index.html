@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Raíces</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<div class="encabezado">
+
+<h1>🌿 Raíces</h1>
+
+<p>PRUEBA V1.8</p>
+
+<p>
+Mi colección de plantas
+</p>
+
+
+<div class="acciones-superiores">
+
+<button class="nuevo-btn" onclick="mostrarFormulario()">
+
+➕ Nueva planta
+
+</button>
+
+
+<input 
+id="buscador"
+class="buscador"
+placeholder="🔎 Buscar planta..."
+oninput="buscarPlantas()">
+
+</div>
+
+</div>
+
+<div class="resumen">
+
+
+<div class="cuadro">
+
+<h2 id="totalPlantas">
+0
+</h2>
+
+<p>
+Plantas
+</p>
+
+</div>
+
+
+
+<div class="cuadro">
+
+<h2 id="totalEsquejes">
+0
+</h2>
+
+<p>
+Esquejes
+</p>
+
+</div>
+
+
+
+<div class="cuadro">
+
+<h2 id="totalAgua">
+0
+</h2>
+
+<p>
+En agua
+</p>
+
+</div>
+
+
+
+</div>
+
+<h2 class="titulo-galeria">📚 Mi colección</h2>
+
+<div id="galeriaPlantas" class="galeria-plantas">
+
+</div>
+
+<div id="coleccion">
+
+
+<div id="formulario" class="formulario">
+
+
+
+
+<div class="filtros">
+
+
+<button onclick="filtrar('Todas')">
+Todas
+</button>
+
+
+<button onclick="filtrar('Planta')">
+Plantas
+</button>
+
+
+<button onclick="filtrar('Esqueje')">
+Esquejes
+</button>
+
+
+<button onclick="filtrar('Favoritas')">
+Favoritas
+</button>
+
+
+</div>
+
+
+
+<input id="nombre"
+placeholder="Nombre de la planta">
+
+
+
+<select id="tipo">
+
+<option value="Planta">
+Planta
+</option>
+
+<option value="Esqueje">
+Esqueje
+</option>
+
+</select>
+
+
+
+<select id="categoria">
+
+<option value="Interior">
+Interior
+</option>
+
+<option value="Exterior">
+Exterior
+</option>
+
+<option value="Suculenta">
+Suculenta
+</option>
+
+<option value="Aromatica">
+Aromática
+</option>
+
+</select>
+
+
+
+<select id="etapa">
+
+<option value="Sana">
+Sana
+</option>
+
+<option value="Enraizando">
+Enraizando
+</option>
+
+<option value="Creciendo">
+Creciendo
+</option>
+
+</select>
+
+
+
+<select id="estado">
+
+<option value="Tierra">
+Tierra
+</option>
+
+<option value="Agua">
+Agua
+</option>
+
+</select>
+
+
+
+<input id="ubicacion"
+placeholder="Ubicación">
+
+
+
+<input type="date"
+id="fecha">
+
+<button type="button" onclick="document.getElementById('camara').click()">
+📷 Sacar foto
+</button>
+
+<button type="button" onclick="document.getElementById('galeria').click()">
+🖼️ Elegir de galería
+</button>
+
+
+<input 
+type="file"
+id="camara"
+accept="image/*"
+capture="environment"
+style="position:absolute; left:-9999px;">
+
+
+<input 
+type="file"
+id="galeria"
+accept="image/*"
+style="position:absolute; left:-9999px;">
+
+
+
+<textarea id="notas"
+placeholder="Notas"></textarea>
+
+
+
+<button type="button" onclick="agregarPlanta()">
+Guardar
+</button>
+
+
+
+</div>
+
+
+<div id="lista"></div>
+
+
+</div>
+
+
+
+<div id="ficha"></div>
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
+
