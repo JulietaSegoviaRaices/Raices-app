@@ -1327,5 +1327,29 @@ return "hace "+años+" años y "+mesesRestantes+" meses";
 }
 
 
+function borrarFotos(){
 
+let plantasLimpias = plantas.map(function(p){
+
+    return {
+        ...p,
+        foto:""
+    };
+
+});
+
+
+localStorage.setItem(
+"plantas",
+JSON.stringify(plantasLimpias)
+);
+
+
+plantas = plantasLimpias;
+
+alert("Fotos eliminadas. La colección sigue guardada.");
+
+mostrar();
+
+}
 
