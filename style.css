@@ -75,7 +75,6 @@ flex:1;
 }
 
 
-}
 
 .resumen{
 
@@ -488,6 +487,10 @@ text-align:center;
 
 box-shadow:0 5px 15px rgba(0,0,0,.12);
 
+}
+
+.resumen .cuadro{
+    width:33%;
 }
 
 .cuadro h2{
@@ -934,5 +937,21 @@ width:90%;
 
 }
 
+.resumen .cuadro{
+
+width:33%;
+
 }
 
+}
+
+.resumen{
+    display:flex !important;
+    flex-direction:row !important;
+    flex-wrap:nowrap !important;
+}
+
+.resumen .cuadro{
+    width:33% !important;
+    flex:1 !important;
+}
