@@ -1,7 +1,5 @@
 ﻿let plantas = JSON.parse(localStorage.getItem("plantas")) || [];
 
-alert("Plantas encontradas: " + plantas.length);
-
 let editando = -1;
 
 let filtroActual = "Todas";
@@ -78,7 +76,11 @@ let lector = new FileReader();
 
 lector.onload=function(e){
 
-    guardarPlanta(e.target.result);
+    comprimirImagen(e.target.result, function(imagenReducida){
+
+        guardarPlanta(imagenReducida);
+
+    });
 
 };
 
@@ -1132,6 +1134,51 @@ function guardarYMostrar(){
 guardar();
 
 mostrar();
+
+}
+
+function comprimirImagen(imagen, callback){
+
+    let img = new Image();
+
+    img.onload = function(){
+
+        let canvas = document.createElement("canvas");
+
+        let max = 800;
+
+        let escala = Math.min(
+            max / img.width,
+            max / img.height
+        );
+
+        canvas.width = img.width * escala;
+        canvas.height = img.height * escala;
+
+
+        let ctx = canvas.getContext("2d");
+
+        ctx.drawImage(
+            img,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+
+        let nuevaImagen = canvas.toDataURL(
+            "image/jpeg",
+            0.7
+        );
+
+
+        callback(nuevaImagen);
+
+    };
+
+
+    img.src = imagen;
 
 }
 
