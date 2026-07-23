@@ -938,11 +938,7 @@ document.getElementById("galeriaPlantas").innerHTML=html;
 function actualizarResumen(){
 
 
-let totalPlantas = plantas.filter(function(p){
-
-return p.tipo=="Planta";
-
-}).length;
+let totalPlantas = plantas.length;
 
 
 
@@ -975,7 +971,6 @@ totalAgua;
 
 
 }
-
 
 
 
