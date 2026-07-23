@@ -253,8 +253,20 @@ limpiar();
 mostrar();
 
 
+let coleccion = document.getElementById("coleccion");
+
+if(coleccion){
+
+coleccion.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
 }
 
+
+}
 
 
 
