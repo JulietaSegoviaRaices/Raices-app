@@ -163,14 +163,11 @@ ubicacion:ubicacion.value,
 
 fecha:fecha.value,
 
-foto:imagen,
+foto:"",
 
-fotos: editando>=0 && plantas[editando].fotos 
-? plantas[editando].fotos.concat(imagen)
-: [imagen],
+fotos:[],
 
 notas:notas.value,
-
 riego: editando>=0 ? plantas[editando].riego : "",
 
 historial: editando>=0 ? plantas[editando].historial : [],
@@ -208,19 +205,26 @@ editando=-1;
 
 guardar();
 
-/*
-guardarPlantaDB(planta)
+
+if(imagen){
+
+guardarFotoDB(
+plantas.length-1,
+imagen
+)
 .then(()=>{
 
-    console.log("Planta guardada en IndexedDB");
+console.log("Foto guardada en IndexedDB");
 
 })
 .catch(error=>{
 
-    console.error(error);
+console.error("Error guardando foto:",error);
 
 });
-*/
+
+}
+
 
 limpiar();
 
@@ -237,11 +241,21 @@ function guardar(){
 
 try{
 
+let plantasSinFotos = plantas.map(function(p){
+
+return {
+    ...p,
+    foto:"",
+    fotos:[]
+};
+
+});
+
+
 localStorage.setItem(
 "plantas",
-JSON.stringify(plantas)
+JSON.stringify(plantasSinFotos)
 );
-
 
 console.log("Guardado correcto");
 
