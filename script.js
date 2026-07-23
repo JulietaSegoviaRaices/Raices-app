@@ -1,6 +1,6 @@
 ﻿let plantas = JSON.parse(localStorage.getItem("plantas")) || [];
 
-alert("Plantas cargadas: " + plantas.length);
+
 console.log(plantas);
 
 let editando = -1;
