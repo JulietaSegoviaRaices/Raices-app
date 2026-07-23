@@ -75,16 +75,16 @@ let lector = new FileReader();
 
 lector.onload=function(e){
 
-    comprimirImagen(e.target.result, function(imagenReducida){
+    comprimirFoto(e.target.result)
+    .then(fotoReducida=>{
 
-        guardarPlanta(imagenReducida);
+        guardarPlanta(fotoReducida);
 
     });
 
 };
 
 lector.readAsDataURL(archivo);
-
 
 
 }else{
@@ -100,6 +100,52 @@ guardarPlanta(fotoAnterior);
 
 }
 
+
+}
+
+function comprimirFoto(src){
+
+return new Promise((resolve)=>{
+
+let img = new Image();
+
+img.onload=function(){
+
+let canvas=document.createElement("canvas");
+
+let max=800;
+
+let escala=Math.min(max/img.width, max/img.height);
+
+
+canvas.width=img.width*escala;
+
+canvas.height=img.height*escala;
+
+
+let ctx=canvas.getContext("2d");
+
+ctx.drawImage(
+img,
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+
+resolve(
+canvas.toDataURL("image/jpeg",0.7)
+);
+
+
+};
+
+
+img.src=src;
+
+
+});
 
 }
 
@@ -123,7 +169,7 @@ ubicacion:ubicacion.value,
 
 fecha:fecha.value,
 
-foto:imagen,
+foto:"",
 
 notas:notas.value,
 
@@ -191,39 +237,30 @@ mostrar();
 
 function guardar(){
 
-    try{
-
-        localStorage.setItem(
-            "plantas",
-            JSON.stringify(plantas)
-        );
-
-        plantas.forEach(function(planta){
-
-            guardarPlantaDB(planta)
-            .then(()=>{
-
-                console.log("Guardada en IndexedDB");
-
-            })
-            .catch(error=>{
-
-                console.error(error);
-
-            });
-
-        });
-
-        console.log("Guardado correcto");
+localStorage.setItem(
+"plantas",
+JSON.stringify(plantas)
+);
 
 
-    }catch(error){
+plantas.forEach(function(planta){
 
-        console.error(error);
+guardarPlantaDB(planta)
+.then(()=>{
 
-        alert(error);
+console.log("Guardada en IndexedDB");
 
-    }
+})
+.catch(error=>{
+
+console.error(error);
+
+});
+
+});
+
+
+console.log("Guardado correcto");
 
 }
 
