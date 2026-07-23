@@ -336,13 +336,23 @@ notas.value=p.notas;
 editando=i;
 
 
-window.scrollTo(0,0);
-
 mostrar();
 
 
+let formulario = document.getElementById("formulario");
+
+if(formulario){
+
+formulario.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
 }
 
+
+}
 
 
 
@@ -618,13 +628,11 @@ ${p.favorita ? "⭐" : "☆"}
 </button>
 
 
-
-<button class="editar" onclick="editar(${i}); volver()">
+<button class="editar" onclick="editar(${i})">
 
 ✏️ Editar
 
 </button>
-
 
 
 <button class="eliminar" onclick="eliminar(${i}); volver()">
