@@ -986,6 +986,9 @@ p.foto
 
 <h4>${p.nombre}</h4>
 
+<div class="mini-riego">
+${diasDesdeRiego(p.riego)}
+</div>
 
 
 </div>
