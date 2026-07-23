@@ -69,23 +69,17 @@ archivo = galeria.files[0];
 
 if(archivo){
 
-
 let lector = new FileReader();
 
 
 lector.onload=function(e){
 
-    comprimirFoto(e.target.result)
-    .then(fotoReducida=>{
-
-        guardarPlanta(fotoReducida);
-
-    });
+    guardarPlanta(e.target.result);
 
 };
 
-lector.readAsDataURL(archivo);
 
+lector.readAsDataURL(archivo);
 
 }else{
 
