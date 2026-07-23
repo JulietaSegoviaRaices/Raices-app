@@ -43,10 +43,23 @@ abrirBase()
 
     console.log("Base de datos abierta correctamente.");
 
+    mostrar();
+
+
     cargarFotos()
     .then(()=>{
 
         mostrar();
+
+
+        let cargando = document.getElementById("cargando");
+
+        if(cargando){
+
+            cargando.style.display="none";
+
+        }
+
 
     });
 
