@@ -75,14 +75,23 @@ flex:1;
 }
 
 
+}
+
 .resumen{
 
 display:flex;
+
+flex-direction:row;
+
+justify-content:center;
+
 gap:15px;
+
 margin:20px 0;
 
-}
+width:100%;
 
+}
 
 .mini{
 
@@ -274,53 +283,19 @@ margin-top:10px;
 background:#2d6a4f;
 
 }
-.resumen{
-
-display:flex;
-gap:15px;
-margin:20px 0;
-
-}
 
 
 
-.cuadro{
-
-flex:1;
-background:white;
-padding:15px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 5px 15px rgba(0,0,0,.12);
-
-}
 
 
 
-.cuadro h2{
-
-font-size:30px;
-margin:0;
-color:#2d6a4f;
-
-}
 
 
-
-.cuadro p{
-
-margin:5px;
-
-}
 
 
 @media(max-width:600px){
 
-.resumen{
 
-flex-direction:column;
-
-}
 
 }
 #lista{
@@ -498,6 +473,38 @@ transform:translateY(-3px);
 
 }
 
+
+.cuadro{
+
+flex:1;
+
+background:white;
+
+padding:15px;
+
+border-radius:20px;
+
+text-align:center;
+
+box-shadow:0 5px 15px rgba(0,0,0,.12);
+
+}
+
+.cuadro h2{
+
+font-size:30px;
+
+margin:0;
+
+color:#2d6a4f;
+
+}
+
+.cuadro p{
+
+margin:5px;
+
+}
 
 
 .planta img{
@@ -844,13 +851,8 @@ font-size:32px;
 gap:8px;
 }
 
-.cuadro{
-padding:10px;
-}
 
-.cuadro h2{
-font-size:26px;
-}
+
 
 .galeria-plantas{
 grid-template-columns:repeat(3,1fr);
