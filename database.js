@@ -56,6 +56,23 @@ function guardarPlantaDB(planta){
 
 }
 
+function guardarFotoDB(foto){
+
+return new Promise((resolve,reject)=>{
+
+const tx=db.transaction("fotos","readwrite");
+
+const store=tx.objectStore("fotos");
+
+const request=store.add(foto);
+
+request.onsuccess=()=>resolve(request.result);
+
+request.onerror=()=>reject(request.error);
+
+});
+
+}
 
 
 function obtenerPlantasDB(){

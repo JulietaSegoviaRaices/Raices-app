@@ -169,7 +169,11 @@ ubicacion:ubicacion.value,
 
 fecha:fecha.value,
 
-foto:"",
+foto:imagen,
+
+fotos: editando>=0 && plantas[editando].fotos 
+? plantas[editando].fotos.concat(imagen)
+: [imagen],
 
 notas:notas.value,
 
