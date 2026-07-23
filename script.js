@@ -188,46 +188,41 @@ mostrar();
 
 function guardar(){
 
-try{
+    try{
 
-    localStorage.setItem(
-        "plantas",
-        JSON.stringify(plantas)
-    );
+        localStorage.setItem(
+            "plantas",
+            JSON.stringify(plantas)
+        );
 
+        plantas.forEach(function(planta){
 
-    plantas.forEach(function(planta){
+            guardarPlantaDB(planta)
+            .then(()=>{
 
-        guardarPlantaDB(planta)
-        .then(()=>{
+                console.log("Guardada en IndexedDB");
 
-            console.log("Guardada en IndexedDB");
+            })
+            .catch(error=>{
 
-        })
-        .catch(error=>{
+                console.error(error);
 
-            console.error(error);
+            });
 
         });
 
-    });
+        console.log("Guardado correcto");
 
 
-    console.log("Guardado correcto");
+    }catch(error){
 
+        console.error(error);
 
-}catch(error){
+        alert("Error guardando. La foto es demasiado grande");
 
-    console.error(error);
-
-    alert("Error guardando. La foto es demasiado grande");
-
-}
+    }
 
 }
-
-}
-
 
 function limpiar(){
 
