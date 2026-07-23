@@ -304,6 +304,7 @@ behavior:"smooth"
 
 }
 
+}
 
 let coleccion = document.getElementById("coleccion");
 
