@@ -488,7 +488,11 @@ ${p.nombre}
 
 </div>
 
+<div class="ficha-dato">
 
+🌱 Edad: ${edadPlanta(p.fecha)}
+
+</div>
 
 <div class="ficha-dato">
 
@@ -1225,6 +1229,59 @@ function comprimirImagen(imagen, callback){
 
 }
 
+function edadPlanta(fecha){
+
+if(!fecha){
+
+return "Sin fecha registrada";
+
+}
+
+
+let nacimiento = new Date(fecha);
+
+let hoy = new Date();
+
+
+let meses =
+(hoy.getFullYear()-nacimiento.getFullYear())*12
++
+(hoy.getMonth()-nacimiento.getMonth());
+
+
+if(meses < 1){
+
+let dias = Math.floor(
+(hoy-nacimiento)/(1000*60*60*24)
+);
+
+return "hace "+dias+" días";
+
+}
+
+
+if(meses < 12){
+
+return "hace "+meses+" meses";
+
+}
+
+
+let años=Math.floor(meses/12);
+
+let mesesRestantes=meses%12;
+
+
+if(mesesRestantes==0){
+
+return "hace "+años+" años";
+
+}
+
+
+return "hace "+años+" años y "+mesesRestantes+" meses";
+
+}
 
 
 
