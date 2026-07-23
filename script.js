@@ -238,19 +238,58 @@ guardarFotoDB(
 
 console.log("Foto guardada en IndexedDB");
 
+limpiar();
+
+cargarFotos()
+.then(()=>{
+
+mostrar();
+
+let galeria = document.querySelector(".titulo-galeria");
+
+if(galeria){
+
+galeria.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
+
+});
+
 })
+
 .catch(error=>{
 
 console.error("Error guardando foto:",error);
 
 });
 
-}
+
+}else{
 
 
 limpiar();
 
 mostrar();
+
+
+let galeria = document.querySelector(".titulo-galeria");
+
+if(galeria){
+
+galeria.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
+
+
+}
 
 
 let coleccion = document.getElementById("coleccion");
