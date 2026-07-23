@@ -172,10 +172,20 @@ mostrar();
 
 function guardar(){
 
+try{
+
 localStorage.setItem(
 "plantas",
 JSON.stringify(plantas)
 );
+
+alert("Guardado OK");
+
+}catch(error){
+
+alert("ERROR: " + error.message);
+
+}
 
 }
 
