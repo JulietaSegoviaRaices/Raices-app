@@ -1089,10 +1089,6 @@ mostrar();
 }
 
 
-document.getElementById("galeria").addEventListener("change", function(){
 
-console.log("Galería seleccionada");
-
-});
 
 
