@@ -188,15 +188,41 @@ mostrar();
 
 function guardar(){
 
-
 localStorage.setItem(
 "plantas",
 JSON.stringify(plantas)
 );
 
+
+plantas.forEach(function(planta){
+
+guardarPlantaDB(planta)
+.then(()=>{
+
+console.log("Guardada en IndexedDB");
+
+})
+.catch(error=>{
+
+console.error(error);
+
+});
+
+});
+
+
+}
+console.log("Guardado correcto");
+
+}catch(error){
+
+console.error(error);
+
+alert("Error guardando. La foto es demasiado grande");
+
 }
 
-
+}
 
 
 function limpiar(){
