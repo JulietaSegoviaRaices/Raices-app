@@ -60,12 +60,11 @@ archivo = camara.files[0];
 }
 
 
-if(galeria.files.length > 0){
+if(galeria.files.length > 0 && !archivo){
 
 archivo = galeria.files[0];
 
 }
-
 
 
 if(archivo){
@@ -222,7 +221,7 @@ function guardar(){
 
         console.error(error);
 
-        alert("Error guardando. La foto es demasiado grande");
+        alert(error);
 
     }
 
