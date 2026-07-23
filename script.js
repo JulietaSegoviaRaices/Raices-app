@@ -140,7 +140,7 @@ favorita: editando>=0 ? plantas[editando].favorita : false
 if(editando==-1){
 
 planta.historial.push(
-"Creada: "+fechaActual()
+"Creada: "+tiempoTranscurrido(new Date())
 );
 
 plantas.push(planta);
@@ -370,6 +370,50 @@ mostrar();
 function fechaActual(){
 
 return new Date().toLocaleDateString();
+
+}
+function tiempoTranscurrido(fecha){
+
+let hoy=new Date();
+
+let dias=Math.floor(
+(hoy-fecha)/(1000*60*60*24)
+);
+
+
+if(dias==0){
+
+return "hoy";
+
+}
+
+
+if(dias==1){
+
+return "hace 1 día";
+
+}
+
+
+if(dias<30){
+
+return "hace "+dias+" días";
+
+}
+
+
+let meses=Math.floor(dias/30);
+
+
+if(meses==1){
+
+return "hace 1 mes";
+
+}
+
+
+return "hace "+meses+" meses";
+
 
 }
 

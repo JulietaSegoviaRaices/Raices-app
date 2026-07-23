@@ -242,13 +242,24 @@ display:none;
 .ficha-planta{
 
 background:white;
-padding:25px;
+
+width:100%;
+
+max-width:420px;
+
+max-height:85vh;
+
+overflow-y:auto;
+
 border-radius:25px;
-box-shadow:0 5px 20px rgba(0,0,0,.15);
+
+padding:20px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+
+box-sizing:border-box;
 
 }
-
-
 .ficha-planta img{
 
 width:100%;
