@@ -990,6 +990,9 @@ p.foto
 ${diasDesdeRiego(p.riego)}
 </div>
 
+<button class="mini-regar" onclick="event.stopPropagation(); regar(${i})">
+💧 Regar
+</button>
 
 </div>
 
