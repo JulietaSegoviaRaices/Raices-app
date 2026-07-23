@@ -627,11 +627,12 @@ ${p.favorita ? "⭐" : "☆"}
 
 </button>
 
-<button class="editar" onclick="editar(${i}); document.getElementById('ficha').style.display='none';">
+<button class="editar" onclick="editar(${i}); cerrarFicha();">
 
 ✏️ Editar
 
 </button>
+
 
 
 <button class="eliminar" onclick="eliminar(${i}); volver()">
@@ -674,6 +675,16 @@ top: posicionAnterior,
 behavior:"smooth"
 
 });
+
+}
+
+function cerrarFicha(){
+
+let fichaDiv=document.getElementById("ficha");
+
+fichaDiv.style.display="none";
+
+fichaDiv.innerHTML="";
 
 }
 
